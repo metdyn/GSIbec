@@ -40,6 +40,13 @@ find_package( NetCDF REQUIRED COMPONENTS Fortran )
 # NCEP spectral library (optional)
 find_package( sp QUIET )
 
+# ygyu add
+# Allow long Fortran lines
+set(CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS} -ffree-line-length-none")
+
+# Optional: remove -Werror if causing trouble
+string(REPLACE "-Werror" "" CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS}")
+
 ################################################################################
 # Sources
 ################################################################################
