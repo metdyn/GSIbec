@@ -194,8 +194,8 @@ subroutine other_set_(need)
   else
     call load_guess_tsen_(mock=.true.)
   endif
-  if (present(need)) then
-    if (any(need(1:8)=='unfilled')) then
+  if (present(need) .and. size(need) > 0) then
+   if (any(index(need, 'unfilled') == 1 .and. need /= '')) then
       if(mype==0) then
          print *, 'some vars still not filled: ', need
       endif
